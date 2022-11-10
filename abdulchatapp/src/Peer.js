@@ -10,6 +10,7 @@ import { HMSVirtualBackgroundPlugin } from "@100mslive/hms-virtual-background";
 import Audio from "./Audio";
 
 function Peer(props) {
+  console.log("pperrr", props.peer.id);
   const { videoRef } = useVideo({
     trackId: props.peer.videoTrack,
   });
@@ -28,13 +29,12 @@ function Peer(props) {
   const isVirtualBackgroundEnabled = useHMSStore(
     selectIsLocalVideoPluginPresent(virtualBackground.getName())
   );
-  console.log("i am", virtualBackground);
-  console.log("i am virtual", virtualBackground.getName());
+  // console.log("i am", virtualBackground);
+  // console.log("i am virtual", virtualBackground.getName());
   const hmsActions = useHMSActions();
 
   const toggleVB = async () => {
     try {
-      console.log("background", background);
       if (!isVirtualBackgroundEnabled) {
         const pluginFramRate = 15;
         await hmsActions.addPluginToVideoTrack(
