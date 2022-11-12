@@ -7,7 +7,7 @@ function JoinForm() {
   const hmsActions = useHMSActions();
 
   //   state to get value
-  const [inputValues, setInputValues] = React.useState({ name: "", token: "" });
+  const [inputValues, setInputValues] = React.useState({ name: "", token: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhY2Nlc3Nfa2V5IjoiNjM2YjkyMGFhMDRmYThiYzkxNjNjNmNjIiwicm9vbV9pZCI6IjYzNmJhMGEzZTA4ODYzYTNmMmZiMWE1MyIsInVzZXJfaWQiOiJhYmR1bGJhc2l0Iiwicm9sZSI6ImJyb2FkY2FzdGVyIiwidHlwZSI6ImFwcCIsInZlcnNpb24iOjIsImlhdCI6MTY2ODE2MTg3NSwibmJmIjoxNjY4MTYxODc1LCJleHAiOjE2NjgyNDgyNzUsImp0aSI6ImY1NjAzZWUwLWNjMTUtNDg4Mi04NDFkLTYzMzk1NTM5MDE2MiJ9._LAR8AZdNqkoK8ukV3yHgJffeeFuC-dWjQr3YQStyRI" });
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -15,8 +15,8 @@ function JoinForm() {
     console.log(inputValues.name, inputValues.token);
     await hmsActions.join({
       userName: inputValues.name,
-      authToken:
-        "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhY2Nlc3Nfa2V5IjoiNjM2YjkyMGFhMDRmYThiYzkxNjNjNmNjIiwicm9vbV9pZCI6IjYzNmJhMGEzZTA4ODYzYTNmMmZiMWE1MyIsInVzZXJfaWQiOiJhYmR1bGJhc2l0Iiwicm9sZSI6ImJyb2FkY2FzdGVyIiwidHlwZSI6ImFwcCIsInZlcnNpb24iOjIsImlhdCI6MTY2ODA1OTM2OSwibmJmIjoxNjY4MDU5MzY5LCJleHAiOjE2NjgxNDU3NjksImp0aSI6Ijc1ODNkMTMwLTU2YjctNGZmYy05OTBiLTg2M2FmY2NhNWU4NiJ9.syzM4BQBhkK9txNj-biY72LHV_BAlPZlZ1jfYv2fJho",
+      authToken:inputValues.token
+        
     });
   };
 

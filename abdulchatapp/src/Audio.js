@@ -6,7 +6,8 @@ import {
   selectPeerAudioByID,
   selectLocalPeer,
   selectSpeakers,
-  selectAudioTrackByPeerID,
+  selectTrackAudioByID,
+ 
   selectAudioTrackVolume,
   selectPeerByID,
 } from "@100mslive/react-sdk";
@@ -20,6 +21,9 @@ function Audio() {
 
   const speakers = useHMSStore(selectSpeakers);
   console.log("all speakers", speakers);
+
+  const trackAudio=useHMSStore(selectTrackAudioByID(localPeer.id))
+  console.log("trackAudio", trackAudio)
 
 //   const track = useHMSStore(selectAudioTrackByPeerID(localPeer.id));
 

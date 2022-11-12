@@ -9,7 +9,7 @@ var payload = {
   access_key: app_access_key,
   room_id: "636ba0a3e08863a3f2fb1a53",
   user_id: "abdulbasit",
-  role: "broadcaster" || "hls-viewer",
+  role: "broadcaster",
   type: "app",
   version: 2,
   iat: Math.floor(Date.now() / 1000),

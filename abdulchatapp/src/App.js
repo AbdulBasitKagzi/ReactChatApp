@@ -6,6 +6,8 @@ import {
   useHMSActions,
   selectIsConnectedToRoom,
   useHMSStore,
+  selectPeers,
+  selectLocalPeer
 } from "@100mslive/react-sdk";
 import Conference from "./Conference";
 import Footer from "./Footer";
@@ -14,8 +16,13 @@ import DeviceSettings from "./DeviceSettings";
 function App() {
   const hmsActions = useHMSActions();
   const isConnected = useHMSStore(selectIsConnectedToRoom);
+  console.log("isConnected", isConnected)
+  const peers=useHMSStore(selectPeers)
+  console.log("Prs",peers)
+  
 
   React.useEffect(() => {
+ 
     window.onunload = () => {
       if (isConnected) hmsActions.leave();
     };
