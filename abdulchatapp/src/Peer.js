@@ -4,20 +4,55 @@ import {
   useVideo,
   useHMSStore,
   useHMSActions,
-  selectIsLocalVideoPluginPresent,selectIsConnectedToRoom,selectPeers
+  useHMSNotifications,
+  selectIsLocalVideoPluginPresent,
+  selectIsConnectedToRoom,
+  selectPeers,
+  HMSNotificationTypes,
 } from "@100mslive/react-sdk";
 import { HMSVirtualBackgroundPlugin } from "@100mslive/hms-virtual-background";
 import Audio from "./Audio";
 
 function Peer(props) {
-
   const hmsActions = useHMSActions();
-  const isConnected=useHMSStore(selectIsConnectedToRoom)
-  console.log("connected", isConnected)
+  const isConnected = useHMSStore(selectIsConnectedToRoom);
+  console.log("connected", isConnected);
 
-  const peer=useHMSStore(selectPeers)
-  console.log("Peeer",peer.length)
+  const peer = useHMSStore(selectPeers);
+  console.log("Peeer", peer.length);
   console.log("pperrr", props.peer.id);
+
+  const notification = useHMSNotifications([
+    HMSNotificationTypes.PEER_JOINED,
+    HMSNotificationTypes.PEER_LEFT,
+  ]);
+  const peernotification = useHMSNotifications([
+    HMSNotificationTypes.PEER_JOINED,
+    HMSNotificationTypes.PEER_LEFT,
+  ]);
+  // notification
+  React.useEffect(() => {
+    if (!notification) {
+      console.log("I am notification 0");
+      return;
+    }
+    console.log("I am notification 1");
+    console.log("notification type", notification.type);
+    console.log("data", notification.data);
+  }, [notification]);
+
+  // peer notification
+  // React.useEffect(() => {
+  //   console.log("peernotification is here 0");
+  //   if (!peernotification) {
+  //     console.log("mai yaha hu yaha  hu yaha....");
+  //     return;
+  //   } else {
+  //     console.log("peernotification is here 1");
+  //     console.log("peernotification type", peernotification.type);
+  //     console.log("peernotification data", peernotification.data);
+  //   }
+  // }, [peernotification]);
 
   // React.useEffect(()=>{
   //   if(!isConnected && peer.length===1){
@@ -45,7 +80,6 @@ function Peer(props) {
   // );
   // console.log("i am", virtualBackground);
   // console.log("i am virtual", virtualBackground.getName());
- 
 
   // const toggleVB = async () => {
   //   try {
@@ -69,6 +103,7 @@ function Peer(props) {
 
   return (
     <div className="peer-container">
+      {notification && <div>Notification: {notification?.type}</div>}
       {/* <video
         ref={videoRef}
         className={`peer-video ${props.peer.isLocal ? "local" : ""}`}

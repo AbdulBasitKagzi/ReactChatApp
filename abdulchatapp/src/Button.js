@@ -24,7 +24,7 @@ function Button() {
     }
   }, [notification]);
 
-  // tried something but didnot work
+  // funtion to make user leave the call
   const handleLeave = () => {
     hmsActions.leave();
 

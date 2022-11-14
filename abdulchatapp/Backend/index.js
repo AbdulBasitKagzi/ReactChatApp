@@ -7,7 +7,7 @@ var app_secret =
 
 var payload = {
   access_key: app_access_key,
-  room_id: "636ba0a3e08863a3f2fb1a53",
+  room_id: "6371f5310cd7b6e68adc0291",
   user_id: "abdulbasit",
   role: "broadcaster",
   type: "app",
