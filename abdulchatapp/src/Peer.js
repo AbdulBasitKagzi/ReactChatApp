@@ -111,6 +111,7 @@ function Peer(props) {
         muted
         playsInline
       /> */}
+      <img src={props.peer.imageUrl} alt="peerImage" />
       <div className="peer-name">
         {props.peer.name} {props.peer.isLocal ? "(You)" : ""}
       </div>

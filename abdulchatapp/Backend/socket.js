@@ -19,8 +19,9 @@ io.on("connection", (socket) => {
   //   socket.on("hello from client", () => {
   //     console.log("hello");
   //   });
-  socket.on("connectCall", (data) => {
-    socket.broadcast.emit("calling", data);
+  socket.on("connectCall", (data, name) => {
+    console.log("abduldata", data, name);
+    socket.broadcast.emit("calling", data, name);
   });
 });
 
